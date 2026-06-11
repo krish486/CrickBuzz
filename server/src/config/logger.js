@@ -1,10 +1,10 @@
 let pino = require("pino")
 
-pino({
+let logger = pino({
     level: "info",
     transport: {
         target: "pino-pretty"
     }
 })
 
-module.exports = pino
+module.exports = logger

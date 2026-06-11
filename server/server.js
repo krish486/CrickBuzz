@@ -1,11 +1,12 @@
 const createApp = require("./src/app");
-const env = require("./src/config/env")
-
+const env = require("./src/config/env");
+const logger = require("./src/config/logger")
+console.log("logger", logger)
 let startServer = () => {
     let app = createApp();
 
     app.listen(env.PORT, () => {
-        console.log("sever is running on port 3000")
+        logger.info({ port: env.PORT }, "server running")
     })
 }
 

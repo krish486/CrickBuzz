@@ -11,5 +11,5 @@ const parsed = envSchema.parse(process.env);
 if (!parsed.success) {
     console.log("check your env's")
 }
-let parsedData = parsed.data
-module.exports = parsedData 
+
+module.exports = parsed 
