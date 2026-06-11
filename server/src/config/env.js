@@ -6,10 +6,10 @@ let envSchema = zod.object({
     MONGO_URL: zod.string()
 })
 
-const parsed = envSchema.parse(process.env);
+const parsed = envSchema.safeParse(process.env);
 
 if (!parsed.success) {
     console.log("check your env's")
 }
-
-module.exports = parsed 
+let parsedData = parsed.data
+module.exports = parsedData 
