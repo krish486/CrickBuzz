@@ -4,10 +4,16 @@ let env = require("./config/env")
 let hpp = require("hpp")
 let helmet = require("helmet")
 let compression = require("compression")
+let cors = require("cors")
 
 
 let createApp = () => {
     let app = express()
+
+    app.use(cors({
+        origin: env.CORS_ORIGIN,
+        credentials: true
+    }))
 
     app.use(helmet)
     app.use(hpp)

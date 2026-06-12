@@ -6,7 +6,8 @@ let envSchema = zod.object({
     PORT: zod.coerce.number().default(appConstants.PORT),
     MONGO_URL: zod.string().default(appConstants.MONGO_URL),
     NODE_ENV: zod.string().default(appConstants.NODE_ENV),
-    LOGGER_LEVEL: zod.string().default(appConstants.LOGGER_LEVEL)
+    LOGGER_LEVEL: zod.string().default(appConstants.LOGGER_LEVEL),
+    CORS_ORIGIN: zod.string()
 })
 
 const parsed = envSchema.safeParse(process.env);
