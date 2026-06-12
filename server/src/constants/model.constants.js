@@ -3,3 +3,5 @@ const ROLES = {
     ADMIN: "ADMIN",
     SCORER: "SCORER",
 }
+
+module.exports = ROLES
