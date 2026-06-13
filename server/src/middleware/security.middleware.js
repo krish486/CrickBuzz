@@ -4,7 +4,7 @@ let compression = require("compression")
 let cors = require("cors")
 let rateLimit = require("express-rate-limit")
 let express = require("express")
-
+let env = require("../config/env")
 
 let securityMiddleware = (app) => {
     app.use(helmet)

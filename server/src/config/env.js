@@ -7,7 +7,11 @@ let envSchema = zod.object({
     MONGO_URL: zod.string().default(appConstants.MONGO_URL),
     NODE_ENV: zod.string().default(appConstants.NODE_ENV),
     LOGGER_LEVEL: zod.string().default(appConstants.LOGGER_LEVEL),
-    CORS_ORIGIN: zod.string()
+    CORS_ORIGIN: zod.string(),
+    GOOGLE_CALLBACK: zod.string(),
+    GOOGLE_CLIENT_ID: zod.string(),
+    GOOGLE_CLIENT_SECRET: zod.string(),
+    JWT_SECRET: zod.string(),
 })
 
 const parsed = envSchema.safeParse(process.env);
