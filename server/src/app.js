@@ -2,6 +2,7 @@ let express = require("express")
 let morgan = require("morgan")
 let env = require("./config/env")
 const securityMiddleware = require("./middleware/security.middleware")
+const googleOAuthMiddleware = require("./middleware/googleOAuth.middleware")
 
 
 
@@ -13,6 +14,7 @@ let createApp = () => {
     }
 
     securityMiddleware(app);
+    googleOAuthMiddleware(app)
 
     return app
 }
