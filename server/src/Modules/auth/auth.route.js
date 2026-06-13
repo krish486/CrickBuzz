@@ -7,10 +7,10 @@ let routes = Router()
 let authController = new AuthController();
 
 
-routes.get("/google", passport.authenticate('google', { scope: ['profile', 'email'], prompt: "select_accout" },))
+routes.get("/google", passport.authenticate('google', { scope: ['profile', 'email'], prompt: "select_account" },))
 
 
-app.get('/google/callback',
+routes.get('/google/callback',
     passport.authenticate('google', { session: false }),
     authController.googleCallback.bind(authController)
 );
