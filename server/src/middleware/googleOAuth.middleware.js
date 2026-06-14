@@ -10,7 +10,7 @@ let googleOAuthMiddleware = (app) => {
         callbackURL: env.GOOGLE_CALLBACK
     },
         async (accessToken, refreshToken, profile, cb) => {
-            return cb(null, user);
+            return cb(null, profile);
         }
     ));
 }

@@ -5,10 +5,10 @@ class UserRepo {
         await userModel.create(payload);
     }
     async findByEmail(email) {
-        await userModel.findOne({ email })
+        await userModel.findOne({ email }).lean()
     }
     async findById(id) {
-        await userModel.findById(id)
+        await userModel.findById(id).lean()
     }
 }
 

@@ -11,7 +11,9 @@ let envSchema = zod.object({
     GOOGLE_CALLBACK: zod.string(),
     GOOGLE_CLIENT_ID: zod.string(),
     GOOGLE_CLIENT_SECRET: zod.string(),
-    JWT_SECRET: zod.string(),
+    ACCESS_SECRET: zod.string(),
+    REFRESH_SECRET: zod.string(),
+    CALLBACK_URL: zod.string()
 })
 
 const parsed = envSchema.safeParse(process.env);
