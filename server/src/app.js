@@ -4,6 +4,7 @@ let env = require("./config/env")
 const securityMiddleware = require("./middleware/security.middleware")
 const googleOAuthMiddleware = require("./middleware/googleOAuth.middleware")
 let authRoutes = require("./Modules/auth/auth.route")
+const ErrorHandler = require("./middleware/errorHandler.middleware")
 
 
 let createApp = () => {
@@ -12,11 +13,12 @@ let createApp = () => {
     if (env.NODE_ENV === "developement") {
         app.use(morgan("dev"))
     }
+    securityMiddleware(app);
+    googleOAuthMiddleware(app)
 
     app.use("/api/auth", authRoutes)
 
-    securityMiddleware(app);
-    googleOAuthMiddleware(app)
+    app.use(ErrorHandler)
 
     return app
 }
