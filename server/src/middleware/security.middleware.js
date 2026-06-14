@@ -5,6 +5,7 @@ let cors = require("cors")
 let rateLimit = require("express-rate-limit")
 let express = require("express")
 let env = require("../config/env")
+let CookieParser = require("cookie-parser")
 
 let securityMiddleware = (app) => {
     app.use(helmet)
@@ -13,6 +14,8 @@ let securityMiddleware = (app) => {
         origin: env.CORS_ORIGIN,
         credentials: true
     }))
+
+    app.use(CookieParser)
 
     //ek particular ip address se 100 request aayegi in 15 mins
     app.use(rateLimit({
