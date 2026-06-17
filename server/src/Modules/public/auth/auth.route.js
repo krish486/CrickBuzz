@@ -1,6 +1,7 @@
 let { Router } = require("express")
 const passport = require("passport")
-const AuthController = require("./auth.controller")
+const AuthController = require("./auth.controller");
+const { asyncHandler } = require("../../../shared/AsyncHandler");
 
 let routes = Router()
 
@@ -18,7 +19,7 @@ routes.get("/check", (req, res) => {
 
 routes.get('/google/callback',
     passport.authenticate('google', { session: false }),
-    authController.googleCallback.bind(authController)
+    asyncHandler(authController.googleCallback.bind(authController))
 );
 
 
