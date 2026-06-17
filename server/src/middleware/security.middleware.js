@@ -8,14 +8,14 @@ let env = require("../config/env")
 let CookieParser = require("cookie-parser")
 
 let securityMiddleware = (app) => {
-    app.use(helmet)
+    app.use(helmet())
 
     app.use(cors({
         origin: env.CORS_ORIGIN,
         credentials: true
     }))
 
-    app.use(CookieParser)
+    app.use(CookieParser())
 
     //ek particular ip address se 100 request aayegi in 15 mins
     app.use(rateLimit({
@@ -25,8 +25,8 @@ let securityMiddleware = (app) => {
         message: "to many request thode samay baad try karo"
     }))
 
-    app.use(hpp)
-    app.use(compression)
+    app.use(hpp())
+    app.use(compression())
 
     app.use(express.json({ limit: "3mb" }))
     app.use(express.urlencoded({ extended: true, limit: "3mb" }))

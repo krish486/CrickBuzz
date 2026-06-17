@@ -3,6 +3,8 @@ const passport = require('passport');
 let env = require("../config/env")
 
 let googleOAuthMiddleware = (app) => {
+    console.log("this is check point")
+
     app.use(passport.initialize())
     passport.use(new GoogleStrategy({
         clientID: env.GOOGLE_CLIENT_ID,
@@ -10,6 +12,7 @@ let googleOAuthMiddleware = (app) => {
         callbackURL: env.GOOGLE_CALLBACK
     },
         async (accessToken, refreshToken, profile, cb) => {
+            
             return cb(null, profile);
         }
     ));

@@ -7,8 +7,14 @@ let routes = Router()
 let authController = new AuthController();
 
 
-routes.get("/google", passport.authenticate('google', { scope: ['profile', 'email'], prompt: "select_account" },))
+routes.get("/google", (req, res, next) => {
+    console.log("GOOGLE ROUTE HIT");
+    next();
+}, passport.authenticate('google', { scope: ['profile', 'email'], prompt: "select_account" }))
 
+routes.get("/check", (req, res) => {
+    res.send("Auth Route Working");
+});
 
 routes.get('/google/callback',
     passport.authenticate('google', { session: false }),

@@ -5,10 +5,12 @@ const securityMiddleware = require("./middleware/security.middleware")
 const googleOAuthMiddleware = require("./middleware/googleOAuth.middleware")
 let authRoutes = require("./Modules/auth/auth.route")
 const ErrorHandler = require("./middleware/errorHandler.middleware")
+const notFound = require("./middleware/notFound.middleware")
 
 
 let createApp = () => {
     let app = express()
+
 
     if (env.NODE_ENV === "developement") {
         app.use(morgan("dev"))
@@ -18,6 +20,7 @@ let createApp = () => {
 
     app.use("/api/auth", authRoutes)
 
+    app.use(notFound)
     app.use(ErrorHandler)
 
     return app
