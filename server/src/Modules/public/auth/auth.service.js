@@ -1,6 +1,6 @@
-let UserRepo = require("../../repository/user.repository")
+let UserRepo = require("../../../repository/user.repository")
 let jwt = require("jsonwebtoken")
-let env = require("../../config/env")
+let env = require("../../../config/env")
 
 class AuthService {
     constructor() {
@@ -25,6 +25,7 @@ class AuthService {
             email: result.email,
             name: result.name,
             picture: result.picture,
+            role: result.role,
         }
 
         const refreshToken = jwt.sign(data, env.REFRESH_SECRET, { expiresIn: "30D" })

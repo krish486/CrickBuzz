@@ -15,3 +15,14 @@ const authMiddleware = (req, res, next) => {
         throw new unAuthorize("token not found")
     }
 }
+
+const authorizationMiddleware = (req, res, next) => {
+    if (req.user.role === "ADMIN" || req.user.role === "SUPER_ADMIN") {
+        next();
+    }
+    else {
+        throw new unAuthorize("invalid role")
+    }
+}
+
+module.exports = { authMiddleware, authorizationMiddleware }

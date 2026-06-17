@@ -1,6 +1,6 @@
 const AuthService = require("./auth.service")
-const appConstants = require("../../constants/app.constants")
-const env = require("../../config/env")
+const env = require("../../../config/env")
+const appConstants = require("../../../constants/app.constants")
 
 class AuthController {
     constructor() {
