@@ -2,6 +2,7 @@ let { Router } = require("express")
 const passport = require("passport")
 const AuthController = require("./auth.controller");
 const { asyncHandler } = require("../../../shared/AsyncHandler");
+const { authMiddleware } = require("../../../middleware/auth.middleware");
 
 let routes = Router()
 
@@ -23,5 +24,7 @@ routes.get('/google/callback',
 );
 
 routes.get("/refresh", asyncHandler(authController.refreshTokenController.bind(authController)))
+
+routes.get("/me", authMiddleware, asyncHandler(authController.getMe.bind(authController)))
 
 module.exports = routes
