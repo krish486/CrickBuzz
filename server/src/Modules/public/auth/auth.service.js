@@ -33,6 +33,15 @@ class AuthService {
 
         return { accessToken, refreshToken }
     }
+    async refreshTokenService(refreshToken) {
+        if (!refreshToken) throw new NotFound("Refresh token not found");
+
+        let data = jwt.verify(refreshToken, env.REFRESH_SECRET);
+
+        const accessToken = jwt.sign(data, env.ACCESS_SECRET);
+
+        return { accessToken }
+    }
 }
 
 module.exports = AuthService

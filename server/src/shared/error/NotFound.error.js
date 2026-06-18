@@ -1,9 +1,11 @@
-import { StatusCodes } from "http-status-codes";
+let { StatusCodes } = require("http-status-codes")
 
 const { AppError } = require("./app.error");
 
-export class NotFound extends AppError {
+class NotFound extends AppError {
     constructor(message, details = "") {
         super(message, StatusCodes.NOT_FOUND, details);
     }
 }
+
+module.exports = { NotFound }

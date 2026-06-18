@@ -1,5 +1,5 @@
 //parent
-export class AppError extends Error {
+class AppError extends Error {
     constructor(message, statuscode, details = "") {
         supper(message);
         this.statuscode = statuscode;
@@ -7,4 +7,4 @@ export class AppError extends Error {
         this.details = details;
     }
 }
-
+module.exports = { AppError }

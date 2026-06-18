@@ -22,5 +22,6 @@ routes.get('/google/callback',
     asyncHandler(authController.googleCallback.bind(authController))
 );
 
+routes.get("/refresh", asyncHandler(authController.refreshTokenController.bind(authController)))
 
 module.exports = routes

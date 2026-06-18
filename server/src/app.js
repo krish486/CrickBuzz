@@ -3,7 +3,7 @@ let morgan = require("morgan")
 let env = require("./config/env")
 const securityMiddleware = require("./middleware/security.middleware")
 const googleOAuthMiddleware = require("./middleware/googleOAuth.middleware")
-let authRoutes = require("./Modules/auth/auth.route")
+let authRoutes = require("../src/Modules/public/auth/auth.route")
 const ErrorHandler = require("./middleware/errorHandler.middleware")
 const notFound = require("./middleware/notFound.middleware")
 
